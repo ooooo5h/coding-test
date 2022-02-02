@@ -2,6 +2,11 @@
 # 8이라는 숫자를 모두 카운팅해야함 ( ex. 8888은 4임 )
 
 
-print(str([i for i in range(1,10001)]).count('8'))
+count = 0
+for i in range(1, 10001):
+    if '8' in str(i):
+        count += 1   # 정답이 아님 : 8888은 1로 체크하게됨.
+
+print(count)
 
 
