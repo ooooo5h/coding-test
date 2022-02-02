@@ -5,7 +5,7 @@
 count = 0
 for i in range(1, 10001):
     if '8' in str(i):
-        count += 1   # 정답이 아님 : 8888은 1로 체크하게됨.
+        count += str(i).count('8')
 
 print(count)
 
