@@ -3,12 +3,6 @@
 # S = [1,3,4,8,13,17,20]이 주어졌다면 결과값은 (3,4)가 된다
 
 s = [1,3,4,8,13,17,20]
-m = max(s)
+ss = [3,4,8,13,17,20]
 
-index = 0
-for i in range(len(s) - 1):
-    if m > s[i+1] - s[i]:
-        index = i
-        m = s[i+1] - s[i]
-        
-print((s[index], s[index+1]))
+print(sorted(list(zip(s, ss)), key=lambda i:i[1]-i[0])[0])
