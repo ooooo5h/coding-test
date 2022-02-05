@@ -10,5 +10,5 @@ print(bin(9|30)[2:].replace('1', '#').replace('0', ' '))  # 9와 30을 이진수
 arr1 = [3,20,28,18,11]
 arr2 = [5,1,21,17,28]
 
-for i,j in zip(arr1, arr2):   # zip() => 동일 개수로 이루어진 자료형을 묶어줌
-    print(i,j)   # 3,5   20, 1
+for i,j in zip(arr1, arr2):   
+    print(bin(i|j)[2:].replace('1', '#').replace('0', ' ')) # 자리수가 안맞아서 자리수를 맞춰줘야함
