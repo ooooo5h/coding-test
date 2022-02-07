@@ -38,4 +38,16 @@ binance_btc_price_to_won = binance_btc_price_dollar * dollar_to_won
 print(f'해외 Binance의 BTC 가격 : {binance_btc_price_to_won}')
 
 
+# 프리미엄이 몇 % 붙어있는지 확인해보자
 
+# 라면 판매중
+
+# A가게   B가게
+# 1100    1000
+
+# 프리미엄 계산해보자 => A가게가 10% 더 비싸다는 결론은,
+#                      (A가게의 가격 - B가게의 가격) / B가게 가격 * 100
+
+
+primenum = (upbit_btc_price - binance_btc_price_to_won) / binance_btc_price_to_won * 100
+print(f'국내 BTC가 해외 BTC보다 {primenum}% 더 비싸요.')
