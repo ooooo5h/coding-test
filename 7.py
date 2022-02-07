@@ -2,13 +2,19 @@
 
 def solution(participant, completion):
     
-    answer = [0]
+    # 참가자를 이름순으로 정렬을 하고
+    # 완주자를 이름순으로 정렬을 해자
+    # 참가자는 항상 1명 더 많음!
+    participant.sort()   
+    completion.sort()
     
-    for i in participant:
-        if i not in completion:
-            answer.append(i)
+    # print(participant)
+    # print(completion)
     
     
-    return answer[-1]
-    # 정답이 아님..
-    # 이름이 똑같은 참가자가 2명이면 리턴값이 오류가 난다..
+    for p,c in zip(participant,completion ):
+        # print(p,c)   # 정렬한 참가자와 완주자를 짝짓기
+        if p != c:
+            return p
+    
+    return participant[-1]
