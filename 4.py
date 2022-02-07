@@ -14,8 +14,17 @@ if start_num > end_num:
     start_num = end_num
     end_num = backup
 
+# 제일 오래 걸린 단계는 몇단계?
+max_count = 0
+# 갱신되었을때의 숫자는 몇인가?
+max_count_num = 0
+
 for num in range(start_num, end_num+1):
     print(num)
+    
+    # num을 기록해야하니까 미리 백업둬두자
+    backup_num = num
+    
     # 각 num에 대한 hailstone 단계 구하기
 
     count = 0
@@ -35,3 +44,11 @@ for num in range(start_num, end_num+1):
         print(f"{count}단계 : {num}")
         
     print(f"{count} 단계 만에 1이 되었습니다.")
+    
+    # 이번 숫자의 count횟수가, max_count보다 크다면? 더 오래 걸리는 숫자를 발견했다는 뜻
+    if count > max_count:
+        max_count = count
+        max_count_num = backup_num
+        
+    
+print(f"{max_count_num} 숫자가, {max_count}회로 제일 오래 걸렸습니다.")
