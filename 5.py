@@ -14,72 +14,141 @@ user_coin = 20
 cpu_coin = 20
 
 while True:
-    
-    # 컴퓨터가 1~6개 사이의 구슬을 세팅함.
-    cpu_count = random.randint(1, 6)
-    
-    # 홀/ 짝인지 답을 입력.
-    
-    user_answer = input('홀 / 짝을 맞춰주세요 : ')
-    
-    if user_answer not in ['홀', '짝']:
-        print("잘못된 입력입니다.")
-        continue  # 반복문의 이번 바퀴만 skip
         
-        
-    # 몇개의 코인을 베팅할지.
-    user_bet_coin = int(input('몇개의 코인을 베팅? 1~5 사이로 : '))
+    # CPU가 문제 내기
+    # 랜덤숫자를 0 ~ 2로 변경
+    cpu_count = random.randint(0, 2)
+    # 좀더 쉽게하기 위해서 정답을 미리 공개
+    print(f'CPU는 {cpu_count}개의 구슬을 집었습니다.')
     
-    if user_bet_coin not in range(1, 6):  # 1~ 6직전 : 1~5 사이에 없는지?
-        print('1~5개 사이만 베팅 가능합니다.')
+    # 0,1,2 중 정답을 맞추기    
+    user_answer = int(input('사용자 - 0, 1, 2 중 생각하는 정답 입력 : '))
+    
+    if user_answer not in range(0, 3):
+        print("0,1,2 중 입력하세요.")
+        continue  
+        
+    # 몇개의 코인을 배팅할건지?
+    user_bet_coin = int(input('사용자 - 몇개의 코인을 베팅? 1~5 사이로 : '))
+    
+    if user_bet_coin not in range(1, 6):  
+        print('1~5개 사이만 배팅가능합니다.')
         continue
     
     if user_bet_coin > user_coin:  # 내가 가진 코인보다 더 많이 베팅함.
         print('보유 코인이 부족합니다.')
         continue
     
-    
     if user_bet_coin > cpu_coin:  # CPU가 코인 부족.
         print('상대방의 보유 코인이 부족합니다.')
         continue
+    
+    # user가 0
+    if user_answer == 0:  
+        # cpu가 0일때
+        if cpu_count == 0:
+            
+            # 사용자 승리 => 배팅건 구슬 갯수만큼 CPU로부터 받아오기
+            user_coin += user_bet_coin
+            cpu_coin -= user_bet_coin
         
-    # 제대로 입력햇다면 마저 진행.
-    
-    # CPU가 몇개를 집었는지 공개
-    print(f'CPU는 {cpu_count}개의 구슬을 집었습니다.')
-    
-    if user_answer == '홀':
-        if cpu_count % 2 == 1:
+        # cpu가 0 이 아닐때    
+        else:                                         
+            # 사용자 패 => 구슬 뺏기기
+            user_coin -= user_bet_coin
+            cpu_coin += user_bet_coin     
             
-            print('사용자 승리입니다.')
-            
-            # 사용자 승리. => 코인 한개 CPU로부터 받아오자.
+    # user가 1
+    elif user_answer == 1:      
+        if cpu_count == 1:            
             user_coin += user_bet_coin
             cpu_coin -= user_bet_coin
-        else:
-            print('사용자 패배입니다.')
+          
+        else:                                         
             user_coin -= user_bet_coin
             cpu_coin += user_bet_coin
-    else:
-        # 짝을 입력한 경우.
-        if cpu_count % 2 == 0:
-            
-            print('사용자 승리입니다.')
-            # 맞춘 경우.
+      
+    # user가 2
+    else:      
+        if cpu_count == 2:         
             user_coin += user_bet_coin
             cpu_coin -= user_bet_coin
-        else:
             
-            print('사용자 패배입니다.')
+        else:     
             user_coin -= user_bet_coin
             cpu_coin += user_bet_coin
     
-    # 현재 각자의 코인 갯수도 출력
+    # 현재 각자의 코인 갯수 출력
+    print(f'사용자 보유 코인 : {user_coin}개')
+    print(f'컴퓨터 보유 코인 : {cpu_coin}개')
+    
+    # 사용자가 문제내기
+    # 랜덤숫자를 0 ~ 2로 변경
+    user_count = random.randint(0, 2)
+    # 좀더 쉽게하기 위해서 정답을 미리 공개
+    print(f'사용자는 {user_count}개의 구슬을 집었습니다.')
+    
+    # 0,1,2 중 정답을 맞추기    
+    cpu_answer = int(input('컴퓨터 - 0, 1, 2 중 생각하는 정답 입력 : '))
+    
+    if cpu_answer not in range(0, 3):
+        print("0,1,2 중 입력하세요.")
+        continue  
+        
+    # 몇개의 코인을 배팅할건지?
+    cpu_bet_coin = int(input('컴퓨터 - 몇개의 코인을 베팅? 1~5 사이로 : '))
+    
+    if cpu_bet_coin not in range(1, 6):  
+        print('1~5개 사이만 배팅가능합니다.')
+        continue
+    
+    if cpu_bet_coin > cpu_coin :  # 내가 가진 코인보다 더 많이 베팅함.
+        print('보유 코인이 부족합니다.')
+        continue
+    
+    if cpu_bet_coin > user_coin:  # 사용자가 코인 부족.
+        print('상대방의 보유 코인이 부족합니다.')
+        continue
+    
+    if cpu_answer == 0:  
+        # cpu가 0일때
+        if user_count == 0:
+            
+            # CPU 승리 => 배팅건 구슬 갯수만큼 CPU로부터 받아오기
+            user_coin -= cpu_bet_coin
+            cpu_coin += cpu_bet_coin
+        
+        # cpu가 0 이 아닐때    
+        else:                                         
+            # CPU 패 => 구슬 뺏기기
+            user_coin += cpu_bet_coin
+            cpu_coin -= cpu_bet_coin     
+            
+    # CPU가 1
+    elif cpu_answer == 1:      
+        if user_count == 1:            
+            user_coin -= cpu_bet_coin
+            cpu_coin += cpu_bet_coin
+          
+        else:                                         
+            user_coin += cpu_bet_coin
+            cpu_coin -= cpu_bet_coin
+      
+    # user가 2
+    else:      
+        if user_count == 2:         
+            user_coin -= cpu_bet_coin
+            cpu_coin += cpu_bet_coin
+            
+        else:     
+            user_coin += cpu_bet_coin
+            cpu_coin -= cpu_bet_coin
+    
+    # 현재 각자의 코인 갯수 출력
     print(f'사용자 보유 코인 : {user_coin}개')
     print(f'컴퓨터 보유 코인 : {cpu_coin}개')
             
     # 둘중 하나의 코인이 다 떨어졌다면?  경기 종료
-    
     if user_coin == 0:
         print('사용자의 코인이 바닥났습니다.')
         print('GAME OVER')
