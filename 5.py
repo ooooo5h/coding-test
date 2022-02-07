@@ -42,3 +42,13 @@ while True:
             print('사용자가 땡')
             user_coin -= 1
             cpu_coin += 1
+    
+    # 둘 중 하나의 코인이 다 떨어졌다면? 경기 종료시키자
+    if user_coin == 0:
+        print('사용자의 코인 모두 바닥났습니다.')
+        print('GAME OVER')
+        break
+    elif cpu_coin == 0:
+        print('cpu의 코인 바닥났습니다.')
+        print('YOU WIN')
+        break
