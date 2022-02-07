@@ -49,25 +49,29 @@ while True:
             print('사용자 승리입니다.')
             
             # 사용자 승리. => 코인 한개 CPU로부터 받아오자.
-            user_coin += 1
-            cpu_coin -= 1
+            user_coin += user_bet_coin
+            cpu_coin -= user_bet_coin
         else:
             print('사용자 패배입니다.')
-            user_coin -= 1
-            cpu_coin += 1
+            user_coin -= user_bet_coin
+            cpu_coin += user_bet_coin
     else:
         # 짝을 입력한 경우.
         if cpu_count % 2 == 0:
             
             print('사용자 승리입니다.')
             # 맞춘 경우.
-            user_coin += 1
-            cpu_coin -= 1
+            user_coin += user_bet_coin
+            cpu_coin -= user_bet_coin
         else:
             
             print('사용자 패배입니다.')
-            user_coin -= 1
-            cpu_coin += 1
+            user_coin -= user_bet_coin
+            cpu_coin += user_bet_coin
+    
+    # 현재 각자의 코인 갯수도 출력
+    print(f'사용자 보유 코인 : {user_coin}개')
+    print(f'컴퓨터 보유 코인 : {cpu_coin}개')
             
     # 둘중 하나의 코인이 다 떨어졌다면?  경기 종료
     
