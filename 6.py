@@ -50,4 +50,8 @@ print(f'해외 Binance의 BTC 가격 : {binance_btc_price_to_won}')
 
 
 primenum = (upbit_btc_price - binance_btc_price_to_won) / binance_btc_price_to_won * 100
+
+# 소수점 두자리까지만 표기
+primenum = round(primenum, 2)
+
 print(f'국내 BTC가 해외 BTC보다 {primenum}% 더 비싸요.')
