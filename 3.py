@@ -2,27 +2,19 @@
 
 def solution(lottos, win_nums):
     
-    print(sorted(lottos))
-    print(sorted(win_nums))
+    rank = [6,6,5,4,3,2,1]
     
-    correct_num = 0
-    max_rank = 0  # 1등
-    min_rank = 0  # 6등
+    count_zero = lottos.count(0)  # 첫바퀴때 2개
     
-    for lotto in lottos:
-        for win_num in win_nums:
-            if lotto == win_num:
-                correct_num += 1 
+    answer = 0
+    for x in win_nums:
+        if x in lottos:
+            answer += 1  # 맞춘 갯수 첫바퀴때 2개
+            
+    # print(rank[count_zero + answer], rank[answer] )
     
-    print(correct_num)
+    return rank[count_zero + answer], rank[answer] 
     
-    if 0 in lottos:
-        zero_count = lottos.count(0)
-      
-    max_rank = 7 - correct_num + zero_count   # 갖고 있는 0의 갯수 + 일치한 갯수를 7에서 빼면 순위가 나옴 
-    min_rank = 7 - correct_num # 갖고 있는 0이 모두 틀리다는 가정 + 일치한 갯수를 7에서 빼면 최소순위
-    
-    
-    answer = [max_rank, min_rank]
-    
-    return answer
+    # count를 생각하긴 했는데 저렇게 rank에 담아서 하자는 생각이 안떠오름
+    # for문과 if문안에서 x를 같이 써도 되는데 그걸 생각을 못했음..!!
+    # 수학익힘책 푸는 느낌이다.. 대단해
