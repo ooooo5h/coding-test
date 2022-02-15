@@ -1,15 +1,19 @@
-# 핸드폰 번호 가리기
 
-def solution(phone_number):
-        
-    phonenum_length = len(phone_number)
-        
-    back_number = phone_number[-4:]
+def solution(lottos, win_nums):
     
-    back_number_length = len(back_number)
+    count = 0   
+    answer = []
+    dic = {6:1, 5:2, 4:3, 3:4, 2:5, 1:6, 0:6}   # 0:6을 추가해줘야지 정답이 제대로 리턴됨
     
-    front_number = '*'*(phonenum_length - back_number_length)
+    for lotto in lottos:
+        if win_nums.count(lotto) > 0:
+            count += 1
     
-    full_number = front_number + back_number
+    answer.append(dic[count + lottos.count(0)])
+    answer.append(dic[count])
     
-    return full_number
+    return answer
+
+
+    # 0개 6등도 추가해줘야지 정상적으로 리턴이 되는데
+    # 왜냐 하나도 못맞출 수 있으니까!!
