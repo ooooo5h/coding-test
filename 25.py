@@ -2,20 +2,29 @@
 
 def solution(n, lost, reserve):
     
-    # 현재 체육복을 갖고 있는 학생의 수는 입력한 학생수에서 잃어버린 학생수를 뺀다
-    have_체육복 = n - len(lost)
+    # 여벌체육복이 있는 학생도 체육복을 도난당했을 수도 있다(중복된단 이야기)
+    # 진짜 여벌이 있는 애들
+    reserve_only = set(reserve) - set(lost)
     
-    # 반복문을 돌면서 하나하나 비교하면서 차이가 1이 나는가 확인하기
-    can_체육수업 = 0
+    # 진짜 체육복이 없는 애들
+    lost_only = set(lost) - set(reserve)
     
-    for i in lost:
-        for j in reserve:
-            distance = i-j
-            print(i,j,abs(distance))
+    # 여벌이 있는 애들이 빌려줄 수 있는지 확인하기
+    for reserve in reserve_only:
+        front_student = reserve-1
+        back_student = reserve+1
+        
+        # 앞에 있는 학생이 체육복이 진짜로 없다면 빌려주기
+        # 빌려주면 체육복이 있게 되니까 없는 명단에서 삭제
+        if front_student in lost_only:
+            lost_only.remove(front_student)
             
-            if abs(distance) == 1:
-                can_체육수업 += 1
-                
-    print(have_체육복+can_체육수업)
-    # 두 리스트의 절대값 차이가 1이면 카운트하고, 그 수를 체육복 갖고있는 수에 더해주려고했는데
-    # 2번 빌려주는 갯수도 카운팅이 되서 그걸 빼야한다.. 어떻게 뺀다..?
+        # 뒤에 있는 학생 빌려주면 명단에서 뒷번호 삭제
+        elif back_student in lost_only:
+            lost_only.remove(back_student)
+            
+    # 전체 학생수에서 잃어버린 명단에 있는 숫자를 빼주면 된다
+    return n - len(lost_only)
+            
+    
+    
