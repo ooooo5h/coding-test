@@ -1,20 +1,14 @@
 # 프로그래머스 완주하지 못한 선수
 
+from collections import Counter
+
 def solution(participant, completion):
+
+    counter_part = Counter(participant)
+    counter_comp = Counter(completion)
     
-    # 참가자를 이름순으로 정렬을 하고
-    # 완주자를 이름순으로 정렬을 해자
-    # 참가자는 항상 1명 더 많음!
-    participant.sort()   
-    completion.sort()
-    
-    # print(participant)
-    # print(completion)
+    # print(counter_part - counter_comp)
+    answer = Counter(participant) - Counter(completion)
     
     
-    for p,c in zip(participant,completion ):
-        # print(p,c)   # 정렬한 참가자와 완주자를 짝짓기
-        if p != c:
-            return p
-    
-    return participant[-1]
+    return list(answer.keys())[0]
