@@ -2,31 +2,33 @@
 
 def solution(answers):
     
-    stu1 = [1,2,3,4,5] 
-    stu2 = [2,1,2,3,2,4,2,5] 
-    stu3 = [3,3,1,1,2,2,4,4,5,5] 
+    stu1 = [1,2,3,4,5]
+    stu2 = [2,1,2,3,2,4,2,5]
+    stu3 = [3,3,1,1,2,2,4,4,5,5]
     
     result = []
     
-    count = [0,0,0]
+    count_num = [0,0,0]
     
+    # 순서를 맞춰야 정답이기때문에 enumerate를 사용했음
     for index, answer in enumerate(answers) :
-        # enumerate함수를 이용하여, answers에 담긴 index와 answer 값을 하나씩 꺼내서
-        # stu1이 맞췄다면! 하지만 answer가 5개가 아니라 6개, 7개일 수도 있으니까 반복을 돌려야한다.
-        # 1,2,3,4,5 끝나고 또 1,2,3,4,5 앞으로 도니까 이 값을 어떻게 표현하면 좋을까
-        # index % len(stu1)이 정답. 그러면 answers에 6개의 값이 담겨있다고 치면, 5개 돌고나서 나머지 1개는 나눈 값이 0이기때문에 맨앞으로 이동!
-        if answer == stu1[index % len(stu1) ]:
-            count[0] += 1
+        # answers는 최대 10,000문제로 구성되어있다 => stu들을 돌면서 비교해야 함
+        # index를 stu의 길이로 나눈 나머지를 이용하면 0,1,2,3,4,0,1,2,3,4... 순환 가능
+        if answer == stu1[index % len(stu1)] :
+            # 정답을 맞췄다면
+            count_num[0] += 1
         if answer == stu2[index % len(stu2)]:
-            count[1] += 1
+            count_num[1] += 1
         if answer == stu3[index % len(stu3)]:
-            count[2] += 1
+            count_num[2] += 1
     
-    for idx, s in enumerate(count):
-        if s == max(count):
-            # 최대값을 담아두고,
-            # 동일한 값이 발생해도 결과값에 담아주니까 그대로 리턴하면 정답이 된다.
+    # 맞춘 갯수들이 count_num에 들어가있다.
+    # 점수를 맞춘 사람들을 return해야함
+    for idx, x in enumerate(count_num):
+        # 최대값을 구하면, 순서에 맞게 result리스트에 대입해주기
+        if x == max(count_num):
+            # idx는 0,1,2 로 나오기 때문에 +1을 해줌
             result.append(idx+1)
     
-    
     return result
+            
