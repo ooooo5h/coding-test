@@ -18,3 +18,16 @@ print(0x10)
 # 2,8,16진수의 문자열을 10진수 정수로 바꾸기
 print(int('101', 2))
 print(int('17', 8))
+
+# Q1 : 10진수 수를 입력받아 8진수로 바꿔 출력하기
+input_num = int(input('10진수 입력 : '))
+change_to_oct_num = oct(input_num)
+print(change_to_oct_num)
+
+# Q2 : 8진수 수를 입력받아 10진수로 출력하기
+# input_num2 = input('8진수 수 입력 : ')
+# change_to_ten_num = int(input_num2, 8)
+# print(change_to_ten_num)
+
+input_num2 = int(input('8진수 수 입력 : '), 8)
+print(input_num2)
