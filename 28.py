@@ -31,3 +31,21 @@ print(change_to_oct_num)
 
 input_num2 = int(input('8진수 수 입력 : '), 8)
 print(input_num2)
+
+# 이제 막혔던 3진법 뒤집기 코테의 마무리를 지어보자
+def solution(n):
+    answer = ''
+    
+    while n >= 1 :
+        divided_num = n // 3
+        rest_num = n % 3
+        answer = answer + str(rest_num)
+        n = divided_num
+        
+    #     print(divided_num, rest_num)
+    # print(answer)
+    
+    answer = int(answer, 3)  
+    
+    
+    return answer
