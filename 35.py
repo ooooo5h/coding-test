@@ -8,3 +8,9 @@ def solution(a, b):
         answer += b[idx] * val
         
     return answer
+
+
+def solution(a, b):
+    
+    # zip함수와 리스트 컴프리헨션을 이용해서 더 간단하게 코드를 짤 수도 있음..!!
+    return sum ([(x*y) for x,y in zip(a,b)])
