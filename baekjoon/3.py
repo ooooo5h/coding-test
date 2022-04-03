@@ -46,5 +46,16 @@ for i in range(t):
 a,b = input().split()
 if int(a) != 0 and int(b) != 0 :
     print(f'{int(a)+int(b)}')
+    
+# 10871
+n,x = input().split()
+a = map(int, input().split())
+answer = []
+for ai in a :
+    if ai < int(x):
+        answer.append(ai)
+
+for b in answer :
+    print(b, end=' ')
 
     
