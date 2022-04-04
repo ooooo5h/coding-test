@@ -71,7 +71,7 @@ elif m >= 45 :
         
 print(h, m)
 
-# 오븐 시계
+# 오븐 시계 2525
 a,b = input().split()
 c = int(input())
 a = int(a)
@@ -79,9 +79,16 @@ b = int(b)
 
 if b + c < 60 :
     b += c
-elif b + c >= 60 :
+else :
+    # 60분을 넘어갈 때.
+    # c가 1000분이면.. 1059분..  -60 하고 +1 시에 더해주기
     b += c
-    
-    
+    while b >= 60 :
+        b -= 60
+        a += 1
+        
+        if a >= 24 :
+            a -= 24
+            
     
 print(a, b)
