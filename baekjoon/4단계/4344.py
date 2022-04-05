@@ -1,7 +1,7 @@
 # 문제를 다시 보니 평균을 "넘는" 수...
 
 c = int(input())
-5
+
 for i in range(c):   
     
     score_list = list(map(int, input().split()))
@@ -19,3 +19,4 @@ for i in range(c):
             
     over_avg_percent = (over_avg_count / student_count) * 100
     print(f'{over_avg_percent:.3f}%')
+    
