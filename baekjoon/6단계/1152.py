@@ -1,7 +1,4 @@
-s = input()
+sentence = input().split( )
+# print(sentence)
 
-count = 0
-
-for idx, a in enumerate(s):
-    if s[idx+1] == ' ':
-        
+print(len(sentence))
