@@ -25,34 +25,82 @@
 
 # 이미 등장한 문자가 연속되지않은 타이밍에 등장하면 그룹단어가 아니란 이야기.
 # 등장한 문자는 리스트에 담아두고, 반복문을 돌면서 체크하면 될듯?
+# n = int(input())
+
+# count = 0
+
+# for _ in range(n):  # n 수 만큼 반복문 돌리면서 입력받기
+#     word = input()
+    
+#     exist_list = []
+#     current_w = ''
+    
+#     for w in word :
+        
+#         if w in exist_list :
+#             # 문자가 한번 등장했다면 반복문 깨고 나가라
+#             # break
+#             # => 하지만 똑같은 문자가 반복해서 등장할 수도 있자나..!?
+#             # => 문자가 이미 앞에서 반복됐지만 현재 단어와 같다면 반복이니까 괜찮음
+#             # => 문자가 이미 앞에서 반복됐지만 현재 단어와 다르다면 그건 놉이니까 여기서 break
+#             if current_w != w :
+#                 break
+            
+#         # 위의 조건문에 해당되지 않는다 => 문자 등장한 적 없다.
+#         exist_list.append(w)
+#         current_w = w
+          
+#     else :
+#         # 한 문자를 다 돌았다 => break를 안만나고 실행될 부분은 => 그룹단어니까 카운팅해야함
+#         count += 1
+        
+# print(count)
+        
+# n = int(input())
+
+# count = 0
+
+# for i in range(n) :  # n수만큼의 반복을 돌며 입력받기
+#     word = input()
+    
+#     already_list = []
+#     before_w = ''
+    
+#     for w in word :
+#         # 등장했던 리스트에 이미 담겨있고, 전의 문자와 똑같지 않다면 그룹 단어 아님.
+#         if w in already_list :
+#             if before_w != w :
+#                 break
+            
+#         already_list.append(w)
+#         beforew = w
+    
+#     else :
+#         count += 1
+#         print('w', w)
+        
+# print(count)
+
+
 n = int(input())
 
 count = 0
 
-for _ in range(n):  # n 수 만큼 반복문 돌리면서 입력받기
-    word = input()
+for i in range(n):
     
-    exist_list = []
-    current_w = ''
+    word = input()
+    w_list = []
+    before_w = ''
     
     for w in word :
-        
-        if w in exist_list :
-            # 문자가 한번 등장했다면 반복문 깨고 나가라
-            # break
-            # => 하지만 똑같은 문자가 반복해서 등장할 수도 있자나..!?
-            # => 문자가 이미 앞에서 반복됐지만 현재 단어와 같다면 반복이니까 괜찮음
-            # => 문자가 이미 앞에서 반복됐지만 현재 단어와 다르다면 그건 놉이니까 여기서 break
-            if current_w != w :
+        if w in w_list :
+            if before_w != w :
                 break
             
-        # 위의 조건문에 해당되지 않는다 => 문자 등장한 적 없다.
-        exist_list.append(w)
-        current_w = w
-          
+        w_list.append(w)
+        before_w = w
+        
     else :
-        # 한 문자를 다 돌았다 => break를 안만나고 실행될 부분은 => 그룹단어니까 카운팅해야함
         count += 1
         
 print(count)
-        
