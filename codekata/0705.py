@@ -18,21 +18,26 @@ return: 321
 """
 
 
+# def reverse(number):
+
+  
+#   if number == 0:
+#     return number
+    
+#   i = str(number)[::-1]
+  
+#   if i[0] == '0' and i[-1] != '-':
+#     return i[1:]
+    
+#   if i[-1] == '-' :
+#     return int('-'+ i[:-1])
+#   return int(i)
+  
+# print(reverse(-87120))
+  
 def reverse(number):
-
-  
-  if number == 0:
-    return number
-    
-  i = str(number)[::-1]
-  
-  if i[0] == '0' and i[-1] != '-':
-    return i[1:]
-    
-  if i[-1] == '-' :
-    return int('-'+ i[:-1])
-  return int(i)
-  
-print(reverse(-87120))
-
-    
+  if number < 0 :   # -87120
+    result = int(str(number)[1:][::-1]) * -1
+    return result
+  else:
+    return int(str(number)[::-1])
